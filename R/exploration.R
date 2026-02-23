@@ -7,7 +7,7 @@ source("R/source.R")
 load_packages()
 
 # ---- Load and clean ----
-data_path <- file.path("data", "raw", "2023-Global-Slavery-Index-Data.xlsx")
+data_path <- here::here("data", "raw", "2023-Global-Slavery-Index-Data.xlsx")
 
 df <- load_data(data_path)
 df <- clean_data(df)
