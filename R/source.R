@@ -12,7 +12,8 @@ required_packages <- c(
   "countrycode",
   "rnaturalearth",
   "rnaturalearthdata",
-  "stringr"
+  "stringr",
+  "here"
 )
 
 load_packages <- function(pkgs = required_packages) {
