@@ -12,8 +12,21 @@ required_packages <- c(
   "countrycode",
   "rnaturalearth",
   "rnaturalearthdata",
-  "stringr"
+  "stringr",
+  "here"
 )
+
+install_and_load_packages <- function(pkgs = required_packages) {
+  installed <- rownames(installed.packages())
+  
+  for (pkg in pkgs) {
+    if (!pkg %in% installed) {
+      message("Installing missing package: ", pkg)
+      install.packages(pkg)
+    }
+    library(pkg, character.only = TRUE)
+  }
+}
 
 load_packages <- function(pkgs = required_packages) {
   invisible(lapply(pkgs, require, character.only = TRUE))

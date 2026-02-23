@@ -4,10 +4,10 @@
 # ============================================================
 
 source("R/source.R")
-load_packages()
+install_and_load_packages()
 
 # ---- Load and clean ----
-data_path <- file.path("data", "raw", "2023-Global-Slavery-Index-Data.xlsx")
+data_path <- here::here("data", "raw", "2023-Global-Slavery-Index-Data.xlsx")
 
 df <- load_data(data_path)
 df <- clean_data(df)
@@ -23,6 +23,8 @@ plot_map <- function(world_df, variable, output_name) {
       title = paste("Global Map of", variable),
       fill = variable
     )
+  
+  dir.create("outputs/figures", recursive = TRUE, showWarnings = FALSE)
   
   ggsave(
     filename = file.path("outputs", "figures", output_name),
